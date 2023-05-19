@@ -1,9 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
+dotenv.config();
+
+import dbInit from './db/db.js';
 import router from './routes/index.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 
-dotenv.config();
+dbInit();
 
 const app = express();
 
