@@ -15,7 +15,7 @@ const getUser = asyncHandler(async (req, res) => {
 // route PUT /users/
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-  const { username, name, password } = req.body;
+  const { username, fullname, password } = req.body;
 
   const user = await User.findByIdAndUpdate(req.user._id);
   if (user) {
@@ -23,7 +23,7 @@ const updateUser = asyncHandler(async (req, res) => {
       user.password = password;
     }
     user.username = username || user.username;
-    user.name = name || user.name;
+    user.fullname = fullname || user.fullname;
     await user.save();
 
     res.status(200).json({

@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 
 const todoSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User', // This refers to the User model
+    },
     title: {
       type: String,
       required: true,
