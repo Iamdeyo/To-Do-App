@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Inter';
+  src: url(./assets/font/Inter-roman.var.woff2);
+}
+@font-face {
+  font-family: 'Graphik-web';
+  src: url(./assets/font/Graphik-Regular-Web.woff);
+}
+@font-face {
+  font-family: 'Graphik-bold';
+  src: url(./assets/font/Graphik-Semibold-Web.woff);
+}
+
+body {
+  font-family: 'Inter', Helvetica, sans-serif;
+}
