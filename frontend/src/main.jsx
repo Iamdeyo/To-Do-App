@@ -11,6 +11,7 @@ import './index.css';
 import LandingPage from './pages/LandingPage.jsx';
 import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
+import Home from './pages/Home.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<LandingPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/home" element={<Home />} />
     </Route>
   )
 );

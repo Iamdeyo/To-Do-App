@@ -8,6 +8,8 @@ export default {
         priDark: '#db4c3f',
         priDarkHover: '#c53727',
         liteGrey: 'hsla(53,10%,69%,.2)',
+        textGrey: '#808080',
+        textpri: '#202020',
       },
     },
     plugins: [],
