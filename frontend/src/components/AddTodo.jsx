@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
+import { useCreateTodoMutation } from '../redux/slices/todoApiSlice';
 const AddTodo = () => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
@@ -8,11 +9,19 @@ const AddTodo = () => {
   const addTodoHandler = () => {
     setAddTodo((prev) => (prev = !prev));
   };
-  const submitTodoHandler = (e) => {
+  const currentDate = new Date().toJSON().slice(0, 10);
+
+  const [createTodo, { isLoading, isSuccess }] = useCreateTodoMutation();
+
+  const submitTodoHandler = async (e) => {
     e.preventDefault();
-    console.log(date, title, desc);
+    try {
+      const res = await createTodo({ title, desc, date }).unwrap();
+      console.log(res, isSuccess);
+    } catch (err) {
+      console.log(err);
+    }
   };
-  let currentDate = new Date().toJSON().slice(0, 10);
   return (
     <>
       {!addTodo ? (

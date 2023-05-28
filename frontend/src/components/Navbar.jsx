@@ -26,13 +26,13 @@ const Navbar = () => {
   const [logout] = useLogoutMutation();
 
   const logoutHandler = async () => {
-    try {
-      const res = await logout();
-      dispatch(clearUserInfo());
-      navigate('/');
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await logout();
+    //   dispatch(clearUserInfo());
+    //   navigate('/');
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   return (
     <div>

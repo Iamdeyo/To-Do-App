@@ -1,11 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { apiSlice } from './apiSlice';
 
-const baseQuery = fetchBaseQuery({ baseUrl: '' });
 const USER_URL = '/api/auth';
 
-export const authApiSlice = createApi({
-  baseQuery,
-  tagTypes: ['Auth'],
+export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
