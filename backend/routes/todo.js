@@ -4,7 +4,9 @@ import {
   createTodo,
   deleteTodo,
   getAllTodos,
+  getTodayTodos,
   getTodo,
+  getUpcomingTodos,
   updateTodo,
 } from '../controllers/todo.js';
 
@@ -15,6 +17,8 @@ todoRouter
   .post(protect, createTodo)
   .put(protect, updateTodo)
   .get(protect, getAllTodos);
+todoRouter.get('/today', protect, getTodayTodos);
+todoRouter.get('/upcoming', protect, getUpcomingTodos);
 todoRouter.route('/:todoId').get(protect, getTodo).delete(protect, deleteTodo);
 
 export default todoRouter;

@@ -17,6 +17,10 @@ const todoSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    date: {
+      type: Date,
+      required: true,
+    },
   },
   {
     timeStamps: true,
