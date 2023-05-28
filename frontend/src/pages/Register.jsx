@@ -1,21 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Tl from '../assets/img/1.jpg';
 import Tr from '../assets/img/2.jpg';
 import Bl from '../assets/img/3.jpg';
 import Br from '../assets/img/4.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRegisterMutation } from '../redux/slices/authApiSlice';
+import { setCredentials } from '../redux/slices/authSlice';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [hidPassword, setHidPassword] = useState(true);
   const hidpasswordHandler = () => {
     setHidPassword((prev) => (prev = !prev));
   };
-  const formHandler = (e) => {
+  const [register, { isLoading }] = useRegisterMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/home');
+    }
+  }, [navigate, userInfo]);
+
+  const formHandler = async (e) => {
     e.preventDefault();
-    alert(password);
+    try {
+      const fullname = 'Ademola Taiwo';
+      const res = await register({ username, password, fullname }).unwrap();
+      console.log(res);
+      dispatch(setCredentials(res.data));
+    } catch (err) {
+      // console.log(err?.data?.message || err.error);
+      console.log(err);
+    }
   };
   return (
     <>
@@ -31,15 +55,15 @@ const Register = () => {
               xmlns="http://www.w3.org/2000/svg"
               stroke="#000000"
               transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)"
-              stroke-width="0.00024000000000000003"
+              strokeWidth="0.00024000000000000003"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g
                 id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 stroke="#CCCCCC"
-                stroke-width="0.048"
+                strokeWidth="0.048"
               ></g>
               <g id="SVGRepo_iconCarrier">
                 {' '}
@@ -68,7 +92,7 @@ const Register = () => {
                       height="18"
                       viewBox="0 0 18 18"
                       xmlns="http://www.w3.org/2000/svg"
-                      class="MfSWZ05"
+                      className="MfSWZ05"
                       aria-hidden="true"
                     >
                       <g fill="none" fillRule="evenodd">
@@ -100,7 +124,7 @@ const Register = () => {
                       viewBox="0 0 18 18"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      class="MfSWZ05"
+                      className="MfSWZ05"
                       aria-hidden="true"
                     >
                       <mask
@@ -142,7 +166,7 @@ const Register = () => {
                       viewBox="0 0 256 315"
                       xmlns="http://www.w3.org/2000/svg"
                       preserveAspectRatio="xMidYMid"
-                      class="MfSWZ05"
+                      className="MfSWZ05"
                       aria-hidden="true"
                     >
                       <path d="M214 167c0 48 42 63 42 64s-7 22-22 44c-13 20-26 39-48 39-21 0-28-12-52-12s-31 12-51 12c-21 1-37-20-50-39-27-39-48-111-20-159 14-24 39-39 65-39 21-1 40 13 52 13s36-16 60-14c11 0 39 4 58 31-2 1-35 20-34 60M174 50c11-13 19-32 17-50-16 1-35 11-47 24a66 66 0 00-16 48c17 2 35-9 46-22"></path>

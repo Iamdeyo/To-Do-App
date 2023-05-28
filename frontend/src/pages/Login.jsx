@@ -34,6 +34,7 @@ const Login = () => {
       const res = await login({ username, password }).unwrap();
       console.log(res);
       dispatch(setCredentials(res.data));
+      console.log('object');
     } catch (err) {
       // console.log(err?.data?.message || err.error);
       console.log(err);
@@ -222,7 +223,7 @@ const Login = () => {
 
                 <p className="text-[#202020] text-center text-xs font-medium">
                   Don’t have an account?{' '}
-                  <Link to={'/login'} className="underline">
+                  <Link to={'/register'} className="underline">
                     Sign up
                   </Link>
                 </p>
