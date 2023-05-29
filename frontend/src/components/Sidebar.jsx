@@ -1,8 +1,9 @@
 import { BsCalendar2, BsCalendarWeek, BsCardList } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <div className="bg-white w-full max-w-[305px] h-[calc(100vh_-_44px)] p-[18px]">
-      <div className="flex items-center p-[5px] cursor-pointer">
+      <Link to={'/todo'} className="flex items-center p-[5px] cursor-pointer">
         <div className="w-[24px] h-[24px] flex items-center justify-center text-green-600">
           <div className="relative">
             <BsCalendar2 />
@@ -13,8 +14,11 @@ const Sidebar = () => {
           Today
         </p>
         <span className="ml-auto text-xs">5</span>
-      </div>
-      <div className="flex items-center p-[5px] cursor-pointer">
+      </Link>
+      <Link
+        to={'/todo/upcoming'}
+        className="flex items-center p-[5px] cursor-pointer"
+      >
         <div className="w-[24px] h-[24px] flex items-center justify-center text-violet-700">
           <div className="relative">
             <BsCalendarWeek />
@@ -24,8 +28,11 @@ const Sidebar = () => {
           Upcoming
         </p>
         <span className="ml-auto text-xs">5</span>
-      </div>
-      <div className="flex items-center p-[5px] cursor-pointer">
+      </Link>
+      <Link
+        to={'/todo/all'}
+        className="flex items-center p-[5px] cursor-pointer"
+      >
         <div className="w-[24px] h-[24px] flex items-center justify-center text-orange-500">
           <div className="relative">
             <BsCardList />
@@ -34,7 +41,7 @@ const Sidebar = () => {
         <p className="pl-[8px] text-sm hover:font-semibold ease-in duration-150">
           All Todos
         </p>
-      </div>
+      </Link>
     </div>
   );
 };

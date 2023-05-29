@@ -25,7 +25,7 @@ const Register = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/home');
+      navigate('/todo');
     }
   }, [navigate, userInfo]);
 

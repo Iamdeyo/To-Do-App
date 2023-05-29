@@ -103,8 +103,10 @@ const updateTodo = asyncHandler(async (req, res) => {
     todo.desc = desc || todo.desc;
     todo.completed = completed || todo.completed;
 
+    const savedTodo = await todo.save();
+
     return res.status(200).json({
-      data: todo,
+      data: savedTodo,
       message: 'Todo Updated',
     });
   }

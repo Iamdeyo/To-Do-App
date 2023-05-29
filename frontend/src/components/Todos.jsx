@@ -1,11 +1,11 @@
 import Todo from './Todo';
 
-const Todos = () => {
+const Todos = ({ data }) => {
   return (
     <div className="mb-2">
-      <Todo />
-      <Todo />
-      <Todo />
+      {data?.data.map((dt) => (
+        <Todo key={dt._id} data={dt} />
+      ))}
     </div>
   );
 };

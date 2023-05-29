@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import { FiPlus, FiSliders } from 'react-icons/fi';
 import Todos from '../components/Todos';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -28,7 +29,7 @@ const Home = () => {
           {/* main app */}
           <div className="px-[55px]">
             <div>
-              <Todos />
+              <Outlet />
             </div>
             <AddTodo />
           </div>

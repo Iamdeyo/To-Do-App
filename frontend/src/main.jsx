@@ -15,6 +15,9 @@ import Home from './pages/Home.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
 import PrivateRoute from './utlis/PrivateRoute.jsx';
+import AllTodos from './pages/AllTodos.jsx';
+import TodayTodo from './pages/TodayTodo.jsx';
+import UpcomingTodo from './pages/UpcomingTodo.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +26,11 @@ const router = createBrowserRouter(
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="" element={<PrivateRoute />}>
-        <Route path="/home" element={<Home />} />
+        <Route path="" element={<Home />}>
+          <Route path="/todo" element={<TodayTodo />} />
+          <Route path="/todo/all" element={<AllTodos />} />
+          <Route path="/todo/upcoming" element={<UpcomingTodo />} />
+        </Route>
       </Route>
     </Route>
   )

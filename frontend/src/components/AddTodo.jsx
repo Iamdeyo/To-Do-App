@@ -17,7 +17,10 @@ const AddTodo = () => {
     e.preventDefault();
     try {
       const res = await createTodo({ title, desc, date }).unwrap();
-      console.log(res, isSuccess);
+      addTodoHandler();
+      setDate('');
+      setDesc('');
+      setTitle('');
     } catch (err) {
       console.log(err);
     }

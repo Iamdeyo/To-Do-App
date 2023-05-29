@@ -24,7 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/home');
+      navigate('/todo');
     }
   }, [navigate, userInfo]);
 
