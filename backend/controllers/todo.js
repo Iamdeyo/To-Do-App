@@ -92,7 +92,7 @@ const getUpcomingTodos = asyncHandler(async (req, res) => {
 // route PUT todos/
 // @access private
 const updateTodo = asyncHandler(async (req, res) => {
-  const { title, desc, completed, todoId } = req.body;
+  const { title, desc, completed, todoId, date } = req.body;
 
   const todo = await Todo.findOne({
     _id: todoId,
@@ -102,6 +102,7 @@ const updateTodo = asyncHandler(async (req, res) => {
     todo.title = title || todo.title;
     todo.desc = desc || todo.desc;
     todo.completed = completed || todo.completed;
+    todo.date = date || todo.date;
 
     const savedTodo = await todo.save();
 
