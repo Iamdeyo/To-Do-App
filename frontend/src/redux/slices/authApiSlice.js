@@ -23,6 +23,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: `${USER_URL}/logout`,
         method: 'POST',
       }),
+      invalidatesTags: ['User', 'Todo'],
     }),
   }),
 });

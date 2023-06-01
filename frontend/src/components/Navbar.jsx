@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../redux/slices/authApiSlice';
 import { logout as clearUserInfo } from '../redux/slices/authSlice';
+import { apiSlice } from '../redux/slices/apiSlice';
 
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -26,13 +27,16 @@ const Navbar = () => {
   const [logout] = useLogoutMutation();
 
   const logoutHandler = async () => {
-    // try {
-    //   const res = await logout();
-    //   dispatch(clearUserInfo());
-    //   navigate('/');
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const res = await logout();
+      dispatch(clearUserInfo());
+      // Clear the RTK Query cache
+      apiSlice.util.resetApiState();
+
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div>
@@ -93,7 +97,7 @@ const Navbar = () => {
         onClick={menuHandler}
         className={`${
           menu ? 'right-0' : 'right-[200%]'
-        } bg-[#0000007f] absolute w-full top-[44px] ease-in-out duration-200 z-40 md:hidden`}
+        } bg-[#0000007f] absolute w-full top-[44px] ease-in-out duration-200 z-40 h-[calc(100vh_-_44px)] md:hidden`}
       >
         <Sidebar />
       </div>

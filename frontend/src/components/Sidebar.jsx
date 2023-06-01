@@ -2,7 +2,7 @@ import { BsCalendar2, BsCalendarWeek, BsCardList } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
-    <div className="bg-white w-full max-w-[305px] h-[calc(100vh_-_44px)] p-[18px]">
+    <div className="bg-white w-full max-w-[305px] h-full p-[18px] md:bg-liteGrey">
       <Link to={'/todo'} className="flex items-center p-[5px] cursor-pointer">
         <div className="w-[24px] h-[24px] flex items-center justify-center text-green-600">
           <div className="relative">
