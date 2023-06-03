@@ -1,11 +1,13 @@
 import { FaCheck } from 'react-icons/fa';
-import { FiTrash, FiEdit3 } from 'react-icons/fi';
+import { FiTrash, FiEdit3, FiX, FiSend } from 'react-icons/fi';
 import {
   useDeleteTodoMutation,
   useUpdateTodoMutation,
 } from '../redux/slices/todoApiSlice';
 import { useState } from 'react';
 import FormatDate from '../utlis/FormatDate';
+import { toast } from 'react-toastify';
+import Loader from './Loader';
 
 const Todo = ({ data, edit, setEdit }) => {
   const [title, setTitle] = useState(data.title);
@@ -17,14 +19,15 @@ const Todo = ({ data, edit, setEdit }) => {
   const [date, setDate] = useState(formattedDate);
   const currentDate = new Date().toJSON().slice(0, 10);
 
-  const [deleteTodo, { isLoading, isSuccess }] = useDeleteTodoMutation();
-  const [updateTodo] = useUpdateTodoMutation();
+  const [deleteTodo] = useDeleteTodoMutation();
+  const [updateTodo, { isLoading }] = useUpdateTodoMutation();
 
   const deleteTodoHandler = async () => {
     try {
-      await deleteTodo(data._id);
+      const res = await deleteTodo(data._id);
+      toast.info(res.data.message);
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -34,8 +37,9 @@ const Todo = ({ data, edit, setEdit }) => {
         completed: JSON.stringify(!data.completed),
         todoId: data._id,
       });
+      toast.success('Task completed');
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -49,10 +53,10 @@ const Todo = ({ data, edit, setEdit }) => {
         date,
         todoId: data._id,
       }).unwrap();
-      console.log(res);
+      toast.success(res.message);
       setEdit('');
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -120,13 +124,13 @@ const Todo = ({ data, edit, setEdit }) => {
             <div className="mt-[8px] border-t border-t-gray-200 p-[8px] pr-[12px] flex items-center gap-3">
               {/* <p>date</p> */}
 
-              <span class="datepicker-toggle">
-                <span class="datepicker-toggle-button flex items-center justify-center rounded-md border border-blue-300">
+              <span className="datepicker-toggle w-20">
+                <span className="datepicker-toggle-button flex items-center justify-center rounded-md border border-blue-300">
                   <FormatDate date={date} />
                 </span>
                 <input
                   type="date"
-                  class="datepicker-input"
+                  className="datepicker-input"
                   name="date"
                   id="date"
                   min={currentDate}
@@ -138,10 +142,22 @@ const Todo = ({ data, edit, setEdit }) => {
                 className="ml-auto h-[32px] px-[12px] bg-[#f5f5f5] text-sm text-black flex items-center justify-center rounded-md cursor-pointer hover:bg-gray-200 ease-in-out duration-150"
                 onClick={() => setEdit('')}
               >
-                Cancel
+                <p className="hidden sm:block">Cancel</p>
+                <FiX size={20} className="text-red-600 sm:hidden" />
               </div>
               <button className="h-[32px] px-[12px] bg-priDark text-sm text-white flex items-center justify-center rounded-md hover:bg-priDarkHover ease-in-out duration-150 disabled:opacity-70 disabled:cursor-not-allowed">
-                Add task
+                {isLoading ? (
+                  <>
+                    <Loader wide={'w-6'} tall={'h-6'} />
+                  </>
+                ) : (
+                  <>
+                    <p className="hidden sm:block">Update</p>
+                    <FiSend size={20} className="rotate-45 sm:hidden" />
+                  </>
+                )}
+                {/* <p className="hidden sm:block">Add task</p>
+                <FiSend size={20} className="rotate-45 sm:hidden" /> */}
               </button>
             </div>
           </form>

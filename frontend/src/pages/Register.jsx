@@ -8,11 +8,14 @@ import Br from '../assets/img/4.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../redux/slices/authApiSlice';
 import { setCredentials } from '../redux/slices/authSlice';
+import Loader from '../components/Loader';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [fullname, setFullname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [hidPassword, setHidPassword] = useState(true);
@@ -32,13 +35,11 @@ const Register = () => {
   const formHandler = async (e) => {
     e.preventDefault();
     try {
-      const fullname = 'Ademola Taiwo';
       const res = await register({ username, password, fullname }).unwrap();
-      console.log(res);
       dispatch(setCredentials(res.data));
+      toast.success(res.message);
     } catch (err) {
-      // console.log(err?.data?.message || err.error);
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
   return (
@@ -177,6 +178,16 @@ const Register = () => {
                 <div>
                   <form onSubmit={formHandler} className="flex flex-col gap-3">
                     <div className="h-[62px] min-w-[68px] border rounded-xl p-[8px] pb-[4px] flex flex-col text-[#202020]">
+                      <span className="text-xs pb-[8px]">fullname</span>
+                      <input
+                        placeholder="Enter your fullname..."
+                        className="w-full outline-none appearance-none bg-transparent"
+                        type="text"
+                        value={fullname}
+                        onChange={(e) => setFullname(e.target.value)}
+                      />
+                    </div>
+                    <div className="h-[62px] min-w-[68px] border rounded-xl p-[8px] pb-[4px] flex flex-col text-[#202020]">
                       <span className="text-xs pb-[8px]">username</span>
                       <input
                         placeholder="Enter your username..."
@@ -206,9 +217,11 @@ const Register = () => {
                     </div>
                     <button
                       type="submit"
-                      className="bg-priDark text-white font-semibold px-[16px] min-w-[68px] rounded-lg h-[48px] text-lg hover:bg-priDarkHover ease-out duration-150"
+                      className="bg-priDark text-white font-semibold px-[16px] min-w-[68px] rounded-lg h-[48px] text-lg flex items-center justify-center hover:bg-priDarkHover ease-out duration-150 disabled:opacity-80 disabled:cursor-not-allowed"
+                      disabled={isLoading}
                     >
-                      Sign up with Username
+                      {isLoading && <Loader wide={'w-6'} tall={'h-6'} />}
+                      <span>Sign up with Username</span>
                     </button>
                   </form>
                   <p className="pt-4 text-[#202020] text-xs font-medium">

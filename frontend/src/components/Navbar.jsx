@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../redux/slices/authApiSlice';
 import { logout as clearUserInfo } from '../redux/slices/authSlice';
 import { apiSlice } from '../redux/slices/apiSlice';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -24,18 +25,20 @@ const Navbar = () => {
     setDropDown((prev) => (prev = !prev));
   };
 
-  const [logout] = useLogoutMutation();
+  const [logout, { isLoading }] = useLogoutMutation();
 
-  const logoutHandler = async () => {
+  const logoutHandler = async (e) => {
+    e.preventDefault();
     try {
-      const res = await logout();
+      await logout();
       dispatch(clearUserInfo());
       // Clear the RTK Query cache
-      apiSlice.util.resetApiState();
+      dispatch(apiSlice.util.resetApiState());
 
+      toast.info('User Logged out');
       navigate('/');
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
   return (
@@ -80,15 +83,16 @@ const Navbar = () => {
                 </div>
                 <p> Settings</p>
               </div>
-              <div
-                className="flex items-center gap-3 hover:font-medium ease-in-out duration-150"
+              <button
+                className="flex items-center gap-3 hover:font-medium ease-in-out duration-150 disabled:opacity-70 disabled:cursor-not-allowed"
                 onClick={logoutHandler}
+                disabled={isLoading}
               >
                 <div>
                   <BiLogOut size={24} className="text-textGrey" />
                 </div>
                 <p> Log out</p>
-              </div>
+              </button>
             </div>
           </div>
         )}

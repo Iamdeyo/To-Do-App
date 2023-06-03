@@ -1,17 +1,21 @@
 import { useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiSend, FiX } from 'react-icons/fi';
 import { useCreateTodoMutation } from '../redux/slices/todoApiSlice';
+import Loader from './Loader';
+import FormatDate from '../utlis/FormatDate';
+import { toast } from 'react-toastify';
 const AddTodo = () => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
-  const [date, setDate] = useState('');
   const [addTodo, setAddTodo] = useState(false);
+  const currentDate = new Date().toJSON().slice(0, 10);
+  const [date, setDate] = useState('');
+
   const addTodoHandler = () => {
     setAddTodo((prev) => (prev = !prev));
+    setDate(currentDate);
   };
-  const currentDate = new Date().toJSON().slice(0, 10);
-
-  const [createTodo, { isLoading, isSuccess }] = useCreateTodoMutation();
+  const [createTodo, { isLoading }] = useCreateTodoMutation();
 
   const submitTodoHandler = async (e) => {
     e.preventDefault();
@@ -21,10 +25,12 @@ const AddTodo = () => {
       setDate('');
       setDesc('');
       setTitle('');
+      toast.success(res.message);
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
+
   return (
     <>
       {!addTodo ? (
@@ -61,24 +67,41 @@ const AddTodo = () => {
             </div>
             <div className="mt-[8px] border-t border-t-gray-200 p-[8px] pr-[12px] flex items-center gap-3">
               {/* <p>date</p> */}
-              <div>
+              <span className="datepicker-toggle">
+                <span className="datepicker-toggle-button flex items-center justify-center rounded-md border border-blue-300">
+                  <FormatDate date={date} />
+                </span>
                 <input
                   type="date"
+                  className="datepicker-input"
                   name="date"
                   id="date"
                   min={currentDate}
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
                 />
-              </div>
+              </span>
               <div
                 className="ml-auto h-[32px] px-[12px] bg-[#f5f5f5] text-sm text-black flex items-center justify-center rounded-md cursor-pointer hover:bg-gray-200 ease-in-out duration-150"
                 onClick={addTodoHandler}
               >
-                Cancel
+                <p className="hidden sm:block">Cancel</p>
+                <FiX size={20} className="text-red-600 sm:hidden" />
               </div>
-              <button className="h-[32px] px-[12px] bg-priDark text-sm text-white flex items-center justify-center rounded-md hover:bg-priDarkHover ease-in-out duration-150 disabled:opacity-70 disabled:cursor-not-allowed">
-                Add task
+              <button
+                className="h-[32px] px-[12px] bg-priDark text-sm text-white flex items-center justify-center rounded-md hover:bg-priDarkHover ease-in-out duration-150 disabled:opacity-80 disabled:cursor-not-allowed"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader wide={'w-6'} tall={'h-6'} />
+                  </>
+                ) : (
+                  <>
+                    <p className="hidden sm:block">Add task</p>
+                    <FiSend size={20} className="rotate-45 sm:hidden" />
+                  </>
+                )}
               </button>
             </div>
           </form>

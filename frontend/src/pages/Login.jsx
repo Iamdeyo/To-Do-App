@@ -5,6 +5,8 @@ import logImg from '../assets/img/login.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../redux/slices/authApiSlice';
 import { setCredentials } from '../redux/slices/authSlice';
+import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,12 +34,11 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await login({ username, password }).unwrap();
-      console.log(res);
+
       dispatch(setCredentials(res.data));
-      console.log('object');
+      toast.success(res.message);
     } catch (err) {
-      // console.log(err?.data?.message || err.error);
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
   return (
@@ -205,9 +206,11 @@ const Login = () => {
                     </div>
                     <button
                       type="submit"
-                      className="bg-priDark text-white font-semibold px-[16px] min-w-[68px] rounded-lg h-[48px] text-lg hover:bg-priDarkHover ease-out duration-150"
+                      className="bg-priDark text-white font-semibold px-[16px] min-w-[68px] rounded-lg h-[48px] text-lg flex items-center justify-center hover:bg-priDarkHover ease-out duration-150 disabled:opacity-80 disabled:cursor-not-allowed"
+                      disabled={isLoading}
                     >
-                      Log in
+                      {isLoading && <Loader wide={'w-6'} tall={'h-6'} />}
+                      <span>Log in</span>
                     </button>
                   </form>
                   <p className="underline pt-2 text-[#808080] text-xs">
