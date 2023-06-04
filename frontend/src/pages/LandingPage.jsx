@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import heroImg from '../assets/img/hero.png';
+import bgRight from '../assets/img/bg-right.png';
+import bgLeft from '../assets/img/bg-left.png';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
@@ -11,12 +13,12 @@ const LandingPage = () => {
   return (
     <div>
       {/* Nav bar */}
-      <div className="bg-[#FEFDFC] flex items-center pl-[8px] pr-[24px] h-[72px] relative border-b lg:justify-between lg:gap-3 lg:border-b-0">
-        <Link to={'/'} className="flex items-center">
+      <div className="bg-[#FEFDFC] flex items-center px-[24px] h-[72px] fixed top-0 left-0 w-full border-b lg:justify-between lg:gap-3 lg:border-b-0">
+        <Link to={'/'} className="flex items-center gap-1">
           <svg
-            width="60px"
-            height="60px"
-            viewBox="-2.4 -2.4 28.80 28.80"
+            width="35px"
+            height="35px"
+            viewBox="2.5 4.5 20 15"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             stroke="#000000"
@@ -41,8 +43,8 @@ const LandingPage = () => {
               ></path>{' '}
             </g>
           </svg>
-          <p className="text-[#DE483A] hidden text-3xl font-semibold sm:block">
-            d-todo
+          <p className="text-[#DE483A] hidden text-2xl font-semibold sm:block">
+            dtodo
           </p>
         </Link>
         <div className="ml-auto lg:hidden" onClick={mobMenuHandler}>
@@ -57,18 +59,18 @@ const LandingPage = () => {
             mobMenu ? 'top-[72px]' : 'bottom-[1000px]'
           } lg:static lg:h-auto lg:backdrop-blur-none lg:w-auto lg:bg-none `}
         >
-          <div className="bg-[#FEFDFC] py-[32px] px-[24px] lg:bg-none lg:flex lg:p-0 lg:h-full lg:items-center">
-            <div className="flex flex-col gap-2 pb-[16px] lg:flex-row lg:pb-0 lg:pr-[16px]">
-              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px] hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+          <div className="bg-[#FEFDFC] py-[32px] px-[24px]  lg:bg-none lg:flex lg:p-0 lg:h-full lg:items-center text-base lg:text-[0.96em]">
+            <div className="flex flex-col gap-2 pb-[16px] lg:flex-row lg:pb-0 lg:pr-[4px] lg:gap-0 ">
+              <p className="py-[10px] cursor-pointer rounded-xl lg:px-[14px] hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 freatures
               </p>
-              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 templates
               </p>
-              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 for teams
               </p>
-              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px] flex items-center justify-between  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl lg:px-[14px] flex items-center justify-between  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 resources{' '}
                 <FiChevronDown className="h-[20px] w-[20px] self-end" />
               </p>
@@ -76,16 +78,16 @@ const LandingPage = () => {
                 pricing
               </p>
             </div>
-            <div className="border-t flex gap-2 justify-center text-center pt-[16px] lg:pt-0 lg:border-t-0 lg:border-l lg:pl-[16px]">
+            <div className="border-t flex gap-2 justify-center text-center pt-[16px] lg:pt-0 lg:border-t-0 lg:border-l lg:pl-[4px]">
               <Link
                 to={'/login'}
-                className="text-black py-[10px] px-[18px] bg-[hsla(53,10%,69%,.2)] w-full rounded-xl min-w-[72px] lg:w-auto lg:text-inherit lg:bg-transparent lg:hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150"
+                className="text-black py-[10px] px-[18px] lg:px-[14px] bg-[hsla(53,10%,69%,.2)] w-full rounded-xl min-w-[72px] lg:w-auto lg:text-inherit lg:bg-transparent lg:hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150"
               >
                 Log in
               </Link>
               <Link
                 to={'/register'}
-                className="bg-[#DE483A] text-white py-[10px] px-[18px] w-full rounded-xl min-w-[72px] ease-out duration-150 lg:w-auto"
+                className="bg-[#DE483A] text-white py-[10px] px-[18px] lg:px-[14px] w-full rounded-xl min-w-[72px] ease-out duration-150 lg:w-auto"
               >
                 start for free
               </Link>
@@ -98,15 +100,15 @@ const LandingPage = () => {
       {/* ************************************************* */}
 
       {/* hero section */}
-      <div className="mb-[1000px] ">
-        <div className="text-center px-[16px] pt-[128px] text-[#1f1f1f]">
-          <p className="text-4xl font-['Graphik-bold'] font-semibold tracking-wide leading-tight mb-[16px]">
-            Organize your work and life, finally.
-          </p>
-          <p className="text-lg font-medium mb-[24px] leading-7">
+      <div className="mb-[1000px] mt-[136px]">
+        <div className="text-center px-[16px] pt-[128px]  flex flex-col items-center text-[#1f1f1f]">
+          <h1 className="text-[2.313em] font-['Graphik-bold'] sm:text-[5.5vw] font-bold -tracking-[0.01em] leading-tight mb-[16px]">
+            Organize your <br /> work and life, finally.
+          </h1>
+          <h2 className="text-lg font-medium mb-[24px] leading-7">
             Become focused, organized, and calm with Todoist. The world’s #1
             task manager and to-do list app.
-          </p>
+          </h2>
           <Link
             to={'/register'}
             className="bg-[#DE483A] text-white py-[10px] px-[18px] rounded-xl min-w-[72px] inline-block ease-out duration-150 hover:opacity-90"
@@ -115,7 +117,23 @@ const LandingPage = () => {
           </Link>
         </div>
         <div className="px-[16px]">
-          <img src={heroImg} alt="hero" />
+          <div className="lg:grid grid-rows-1 intersection">
+            <img
+              src={bgLeft}
+              alt="heroL"
+              className="hidden lg:block col-start-1 col-end-3 row-start-1"
+            />
+            <img
+              src={bgRight}
+              alt="heroR"
+              className="hidden lg:block col-start-4 col-end-6 row-start-1"
+            />
+            <img
+              src={heroImg}
+              alt="hero"
+              className="col-start-2 col-end-5 row-start-1"
+            />
+          </div>
         </div>
         <div></div>
       </div>

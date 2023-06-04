@@ -65,3 +65,10 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+h2 {
+  text-wrap: balance;
+}
+.intersection {
+  grid-template-columns: 0.8fr 0.74fr 2.5fr 1.34fr 0.79fr;
+}
