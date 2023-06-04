@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
+import { FiMenu, FiX, FiChevronDown, FiStar } from 'react-icons/fi';
 import heroImg from '../assets/img/hero.png';
 import bgRight from '../assets/img/bg-right.png';
 import bgLeft from '../assets/img/bg-left.png';
+import recImg from '../assets/img/rec.png';
+import getMoreImg from '../assets/img/get-more.png';
+import clearMindImg from '../assets/img/clear-mind.png';
+
+import dividerImg from '../assets/img/divider.png';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
@@ -13,7 +18,7 @@ const LandingPage = () => {
   return (
     <div>
       {/* Nav bar */}
-      <div className="bg-[#FEFDFC] flex items-center px-[24px] h-[72px] fixed top-0 left-0 w-full border-b lg:justify-between lg:gap-3 lg:border-b-0">
+      <div className="bg-[#FEFDFC] flex items-center px-[24px] h-[72px] fixed top-0 left-0 w-full border-b lg:justify-between lg:gap-3 lg:border-b-0 z-20">
         <Link to={'/'} className="flex items-center gap-1">
           <svg
             width="35px"
@@ -47,7 +52,10 @@ const LandingPage = () => {
             dtodo
           </p>
         </Link>
-        <div className="ml-auto lg:hidden" onClick={mobMenuHandler}>
+        <div
+          className="ml-auto lg:hidden cursor-pointer"
+          onClick={mobMenuHandler}
+        >
           {!mobMenu ? (
             <FiMenu className="h-[32px] p-[5px] w-[32px] " />
           ) : (
@@ -100,7 +108,7 @@ const LandingPage = () => {
       {/* ************************************************* */}
 
       {/* hero section */}
-      <div className="mb-[1000px] mt-[136px]">
+      <section>
         <div className="text-center px-[16px] pt-[128px]  flex flex-col items-center text-[#1f1f1f]">
           <h1 className="text-[2.313em] font-['Graphik-bold'] sm:text-[5.5vw] font-bold -tracking-[0.01em] leading-tight mb-[16px]">
             Organize your <br /> work and life, finally.
@@ -135,9 +143,65 @@ const LandingPage = () => {
             />
           </div>
         </div>
-        <div></div>
-      </div>
+      </section>
       {/* end hero section */}
+      {/* rating section */}
+      <section className=" relative -mt-[48px]">
+        <img src={dividerImg} alt="div" className="h-12 -mb-2" />
+        <div className="pt-[16px] px-[24px] pb-[48px] items-center rating">
+          <div className="flex flex-col max-w-3xl mx-auto items-center md:flex-row justify-around">
+            <div className="pb-[24px] flex flex-col items-center">
+              <p className="pb-4">200,000+ REVIEWS</p>
+              <span className="flex gap-1 mb-4">
+                <FiStar fill="black" />
+                <FiStar fill="black" />
+                <FiStar fill="black" />
+                <FiStar fill="black" />
+                <FiStar fill="black" />
+              </span>
+              <p className="font-semibold mb-4">App Store and Google Play</p>
+            </div>
+            <div className="pb-[24px] flex flex-col items-center">
+              <p className="uppercase text-sm mb-4">
+                Used by individuals and teams at
+              </p>
+              <img src={recImg} alt="rec" className="mb-4" />
+            </div>
+          </div>
+        </div>
+        {/* <img src={bgBottom} alt="bg-bottom" /> */}
+      </section>
+      {/* end rating section */}
+      <section className="mb-28">
+        <div className="grid items-center p-[32px] text-center max-w-lg md:max-w-5xl mx-auto md:grid-cols-2 md:text-start ">
+          <div className="">
+            <p className="pb-1 text-sm">Get more done</p>
+            <p className="font-['Graphik-bold'] text-2xl">
+              Add your tasks. <br /> Organize your life. <br /> Achieve more
+              every day.
+            </p>
+            <p className="text-wrap text-[#575757]">
+              Add tasks like “Read work emails every day at 10am” to fill your
+              to-do list in seconds using Todoist’s powerful natural language
+              recognition and recurring dates.
+            </p>
+          </div>
+          <img src={getMoreImg} alt="get more" />
+          <div className="md:order-last">
+            <p className="pb-1 text-sm">Clear your mind</p>
+            <p className="font-['Graphik-bold'] text-2xl">
+              Reach that mental clarity <br /> you’ve been longing for.
+            </p>
+            <p className="text-wrap text-[#575757]">
+              Your to-do lists are automatically sorted into Today, Upcoming and
+              custom Filter views to help you focus on your most important
+              things.
+            </p>
+          </div>
+          <img src={clearMindImg} alt="clear your mind" />
+        </div>
+      </section>
+      <footer></footer>
     </div>
   );
 };

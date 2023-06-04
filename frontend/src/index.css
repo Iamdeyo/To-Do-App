@@ -66,9 +66,17 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
-h2 {
+h2,
+.text-wrap {
   text-wrap: balance;
 }
 .intersection {
   grid-template-columns: 0.8fr 0.74fr 2.5fr 1.34fr 0.79fr;
+}
+.rating {
+  background-image: url(../src/assets/img/bg-bottom.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 50%;
+  background-position-y: 100%;
 }
