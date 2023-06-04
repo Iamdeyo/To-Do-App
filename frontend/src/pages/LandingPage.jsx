@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import heroImg from '../assets/img/hero.png';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const [mobMenu, setMobMenu] = useState(false);
@@ -11,7 +12,7 @@ const LandingPage = () => {
     <div>
       {/* Nav bar */}
       <div className="bg-[#FEFDFC] flex items-center pl-[8px] pr-[24px] h-[72px] relative border-b lg:justify-between lg:gap-3 lg:border-b-0">
-        <div className="flex items-center">
+        <Link to={'/'} className="flex items-center">
           <svg
             width="60px"
             height="60px"
@@ -43,7 +44,7 @@ const LandingPage = () => {
           <p className="text-[#DE483A] hidden text-3xl font-semibold sm:block">
             d-todo
           </p>
-        </div>
+        </Link>
         <div className="ml-auto lg:hidden" onClick={mobMenuHandler}>
           {!mobMenu ? (
             <FiMenu className="h-[32px] p-[5px] w-[32px] " />
@@ -58,30 +59,36 @@ const LandingPage = () => {
         >
           <div className="bg-[#FEFDFC] py-[32px] px-[24px] lg:bg-none lg:flex lg:p-0 lg:h-full lg:items-center">
             <div className="flex flex-col gap-2 pb-[16px] lg:flex-row lg:pb-0 lg:pr-[16px]">
-              <p className="py-[10px]  rounded-xl text-base lg:px-[14px] hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px] hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 freatures
               </p>
-              <p className="py-[10px] rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 templates
               </p>
-              <p className="py-[10px] rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 for teams
               </p>
-              <p className="py-[10px] rounded-xl text-base lg:px-[14px] flex items-center justify-between  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px] flex items-center justify-between  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 resources{' '}
                 <FiChevronDown className="h-[20px] w-[20px] self-end" />
               </p>
-              <p className="py-[10px] text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <p className="py-[10px] cursor-pointer rounded-xl text-base lg:px-[14px]  hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
                 pricing
               </p>
             </div>
             <div className="border-t flex gap-2 justify-center text-center pt-[16px] lg:pt-0 lg:border-t-0 lg:border-l lg:pl-[16px]">
-              <p className="text-black py-[10px] px-[18px] bg-[hsla(53,10%,69%,.2)] w-full rounded-xl min-w-[72px] lg:w-auto lg:text-inherit lg:bg-transparent lg:hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150">
+              <Link
+                to={'/login'}
+                className="text-black py-[10px] px-[18px] bg-[hsla(53,10%,69%,.2)] w-full rounded-xl min-w-[72px] lg:w-auto lg:text-inherit lg:bg-transparent lg:hover:bg-[hsla(53,10%,69%,.2)] ease-out duration-150"
+              >
                 Log in
-              </p>
-              <p className="bg-[#DE483A] text-white py-[10px] px-[18px] w-full rounded-xl min-w-[72px] ease-out duration-150 lg:w-auto">
+              </Link>
+              <Link
+                to={'/register'}
+                className="bg-[#DE483A] text-white py-[10px] px-[18px] w-full rounded-xl min-w-[72px] ease-out duration-150 lg:w-auto"
+              >
                 start for free
-              </p>
+              </Link>
             </div>
           </div>
         </div>
@@ -100,9 +107,12 @@ const LandingPage = () => {
             Become focused, organized, and calm with Todoist. The world’s #1
             task manager and to-do list app.
           </p>
-          <p className="bg-[#DE483A] text-white py-[10px] px-[18px] rounded-xl min-w-[72px] inline-block ease-out duration-150 hover:opacity-90">
+          <Link
+            to={'/register'}
+            className="bg-[#DE483A] text-white py-[10px] px-[18px] rounded-xl min-w-[72px] inline-block ease-out duration-150 hover:opacity-90"
+          >
             Start for free
-          </p>
+          </Link>
         </div>
         <div className="px-[16px]">
           <img src={heroImg} alt="hero" />

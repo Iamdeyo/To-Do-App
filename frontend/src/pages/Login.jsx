@@ -45,7 +45,7 @@ const Login = () => {
     <>
       <div className="container max-w-5xl mx-auto p-[24px] min-h-[600px] h-screen flex flex-col gap-[32px] lg:gap-0">
         <div className="max-w-[400px] mx-auto w-full lg:max-w-none">
-          <div className="flex items-center pb-[32px]">
+          <Link to={'/'} className="flex items-center pb-[32px]">
             <svg
               className="relative -left-[13px] -top-[13px]"
               width="56px"
@@ -78,7 +78,7 @@ const Login = () => {
             <p className="text-[#DE483A] relative -left-[13px] -top-[13px] text-2xl font-semibold hidden sm:block">
               d-todo
             </p>
-          </div>
+          </Link>
         </div>
         <div className="pt-[32px] flex">
           <div className="w-full lg:w-1/2 p-[32px] lg:px-0">

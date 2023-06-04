@@ -13,7 +13,6 @@ const Sidebar = () => {
         <p className="pl-[8px] text-sm hover:font-semibold ease-in duration-150">
           Today
         </p>
-        <span className="ml-auto text-xs">5</span>
       </Link>
       <Link
         to={'/todo/upcoming'}
@@ -27,7 +26,6 @@ const Sidebar = () => {
         <p className="pl-[8px] text-sm hover:font-semibold ease-in duration-150">
           Upcoming
         </p>
-        <span className="ml-auto text-xs">5</span>
       </Link>
       <Link
         to={'/todo/all'}
