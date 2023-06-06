@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
-
+import cors from 'cors';
 import dbInit from './db/db.js';
 import router from './routes/index.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
@@ -16,7 +16,8 @@ const app = express();
 app
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use(cookieParser('sercet'));
+  .use(cookieParser('sercet'))
+  .use(cors());
 
 app.use('/api', router);
 

@@ -1,3 +1,3 @@
 export const ENDPOINTS = {
-  BASEURL: 'https://dtodoapp.onrender.com/api',
+  BASEURL: 'https://dtodoapp.onrender.com/',
 };
