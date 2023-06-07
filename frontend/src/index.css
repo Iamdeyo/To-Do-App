@@ -80,3 +80,9 @@ h2,
   background-position-x: 50%;
   background-position-y: 100%;
 }
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(35px, max-content) 1fr;
+  grid-gap: 1.5em;
+  gap: 1.5em;
+}
