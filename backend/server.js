@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-
+import cors from 'cors';
 import dbInit from './db/db.js';
 import router from './routes/index.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
@@ -15,8 +15,13 @@ const app = express();
 app
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use(cookieParser('sercet'));
-
+  .use(cookieParser())
+  .use(
+    cors({
+      credentials: true,
+      origin: ['http://127.0.0.1:3000', 'https://dtodo.onrender.com/'],
+    })
+  );
 app.use('/api', router);
 
 app.get('/', (req, res) => {

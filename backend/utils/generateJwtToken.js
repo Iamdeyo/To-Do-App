@@ -6,8 +6,8 @@ const generateJwtToken = (res, userId) => {
   });
   res.cookie('jwt', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development',
-    sameSite: 'strict',
+    secure: true,
+    sameSite: 'none',
     maxAge: 1000 * 60 * 60 * 24 * 30, // in millisecs converted to 30days
   });
 };

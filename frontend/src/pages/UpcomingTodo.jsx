@@ -2,6 +2,7 @@ import { FiSliders } from 'react-icons/fi';
 import Todos from '../components/Todos';
 import { useGetUpcomingTodoQuery } from '../redux/slices/todoApiSlice';
 import AddTodo from '../components/AddTodo';
+import Loader from '../components/Loader';
 
 const UpcomingTodo = () => {
   const { data, isLoading, isError, isSuccess } = useGetUpcomingTodoQuery();
