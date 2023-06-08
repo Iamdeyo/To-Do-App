@@ -19,7 +19,7 @@ app
   .use(
     cors({
       credentials: true,
-      origin: 'https://dtodo.onrender.com',
+      origin: '*',
     })
   );
 app.use('/api', router);
