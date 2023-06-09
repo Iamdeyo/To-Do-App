@@ -5,6 +5,8 @@ import {
   FiChevronDown,
   FiStar,
   FiChevronRight,
+  FiChevronsRight,
+  FiArrowRight,
 } from 'react-icons/fi';
 import {
   BsFacebook,
@@ -13,6 +15,10 @@ import {
   BsTwitter,
   BsYoutube,
 } from 'react-icons/bs';
+import Tl from '../assets/img/1.jpg';
+import Tr from '../assets/img/2.jpg';
+import Bl from '../assets/img/3.jpg';
+import Br from '../assets/img/4.jpg';
 
 import heroImg from '../assets/img/hero.png';
 import bgRight from '../assets/img/bg-right.png';
@@ -21,6 +27,11 @@ import recImg from '../assets/img/rec.png';
 import getMoreImg from '../assets/img/get-more.png';
 import clearMindImg from '../assets/img/clear-mind.png';
 import FloImg from '../assets/img/flo.png';
+import icon1Img from '../assets/img/icon-1.png';
+import icon2Img from '../assets/img/icon-2.png';
+import icon3Img from '../assets/img/icon-3.png';
+import icon4Img from '../assets/img/icon-4.png';
+import icon5Img from '../assets/img/icon-5.png';
 
 import dividerImg from '../assets/img/divider.png';
 import { Link } from 'react-router-dom';
@@ -202,9 +213,10 @@ const LandingPage = () => {
         {/* <img src={bgBottom} alt="bg-bottom" /> */}
       </section>
       {/* end rating section */}
-      <section className="mb-28">
-        <div className="grid items-center p-[32px] text-center max-w-lg md:max-w-5xl mx-auto md:grid-cols-2 md:text-start ">
-          <div className="">
+
+      <section>
+        <div className="grid items-center p-[32px] mb-[64px] text-center max-w-lg md:container mx-auto gap-4 md:grid-cols-2 md:text-start ">
+          <div className="pb-[32px]">
             <p className="pb-1 text-sm">Get more done</p>
             <p className="font-['Graphik-bold'] text-2xl">
               Add your tasks. <br /> Organize your life. <br /> Achieve more
@@ -216,8 +228,8 @@ const LandingPage = () => {
               recognition and recurring dates.
             </p>
           </div>
-          <img src={getMoreImg} alt="get more" />
-          <div className="md:order-last">
+          <img src={getMoreImg} alt="get more" className="pb-[32px]" />
+          <div className="md:order-last pb-[32px]">
             <p className="pb-1 text-sm">Clear your mind</p>
             <p className="font-['Graphik-bold'] text-2xl">
               Reach that mental clarity <br /> you’ve been longing for.
@@ -228,7 +240,124 @@ const LandingPage = () => {
               things.
             </p>
           </div>
-          <img src={clearMindImg} alt="clear your mind" />
+          <img src={clearMindImg} alt="clear your mind" className="pb-[32px]" />
+        </div>
+      </section>
+      <section>
+        <div className="pb-[64px] px-[24px] md:container md:mx-auto">
+          <div className="flex mb-[32px] items-center flex-col text-center lg:text-start lg:items-start lg:mb-[64px]">
+            <p className="text-wrap font-semibold text-3xl font-['Graphik-bold'] pt-[24px] mb-[8px] max-w-[20ch]  lg:max-w-[40ch]">
+              Delightfully simple and deceptively powerful task management
+            </p>
+            <p className=" max-w-[30ch]  lg:max-w-[50ch]">
+              30 million+ people organize billions of tasks in Todoist for their
+              work, education, and personal life.
+            </p>
+          </div>
+          <div className="grid gap-6 grid-flow-row md:grid-cols-2 lg:gap-10">
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+              <img src={icon1Img} className="w-[90px] mb-2" alt="icon-1" />
+
+              <p className="text-lg font-semibold mb-1">With you everywhere</p>
+              <p className="max-w-[40ch] lg:max-w-full">
+                Use dtodo’s apps, extensions and widgets on any device or
+                platform.
+              </p>
+              <span className="text-[#316fea] font-['Graphik-web'] flex items-center gap-2 hover:border-b border-b-[#316fea] cursor-pointer">
+                <FiArrowRight /> Download apps
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+              <img src={icon2Img} className="w-[90px] mb-2" alt="icon-2" />
+
+              <p className="text-lg font-semibold mb-1">
+                There’s a template for that
+              </p>
+              <p className="max-w-[40ch] lg:max-w-full">
+                Project templates are available to get you started with
+                whatever’s on your plate.
+              </p>
+              <span className="text-[#316fea] font-['Graphik-web'] flex items-center gap-2 hover:border-b border-b-[#316fea] cursor-pointer">
+                <FiArrowRight /> Start with templates
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+              <img src={icon3Img} className="w-[90px] mb-2" alt="icon-3" />
+
+              <p className="text-lg font-semibold mb-1">With you everywhere</p>
+              <p className="max-w-[40ch] lg:max-w-full">
+                Customize your to-do list with filters, labels, priorities, and
+                more.
+              </p>
+              <span className="text-[#316fea] font-['Graphik-web'] flex items-center gap-2 hover:border-b border-b-[#316fea] cursor-pointer">
+                <FiArrowRight /> See all features
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+              <img src={icon4Img} className="w-[90px] mb-2" alt="icon-1" />
+
+              <p className="text-lg font-semibold mb-1">
+                Connect with your other tools
+              </p>
+              <p className="max-w-[40ch] lg:max-w-full">
+                Link Todoist with your calendar, voice assistant, and 70+ other
+                tools.
+              </p>
+              <span className="text-[#316fea] font-['Graphik-web'] flex items-center gap-2 hover:border-b border-b-[#316fea] cursor-pointer">
+                <FiArrowRight /> Install integrations
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+              <img src={icon5Img} className="w-[90px] mb-2" alt="icon-5" />
+
+              <p className="text-lg font-semibold mb-1">Productivity Methods</p>
+              <p className="max-w-[40ch] lg:max-w-full">
+                Personal productivity recommendations based on your unique
+                traits and strengths.
+              </p>
+              <span className="text-[#316fea] font-['Graphik-web'] flex items-center gap-2 hover:border-b border-b-[#316fea] cursor-pointer">
+                <FiArrowRight /> Take the quiz
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="px-[24px] mb-[64px] lg:mb-[190px] flex flex-col items-center lg:flex-row container mx-auto">
+          <div className="flex mb-[32px] items-center flex-col lg:w-2/5 text-center lg:text-start lg:items-start">
+            <p className="text-wrap font-semibold text-3xl font-['Graphik-bold'] pt-[24px] mb-[8px]">
+              A task manager you <br /> can trust for life
+            </p>
+            <p className="lg:max-w-[30ch] max-w-[40ch]">
+              We’ve been building Todoist for 16 years and 131 days.{' '}
+              <span className="text-[#316fea] hover:underline cursor-pointer">
+                We're in it for the long haul.
+              </span>
+            </p>
+          </div>
+
+          <div className="grid items-center w-full max-w-xs lg:max-w-full lg:w-3/5 h-full grid-cols-2 grid-rows-2 lg:flex">
+            <div className="flex flex-col items-center">
+              <img src={Tl} alt="img1" />
+              <p className="pt-3 text-base font-semibold">30 million+</p>
+              <p className="text-sm text-[#808080]">app downloads</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src={Tr} alt="img1" />
+              <p className=" pt-3 text-base font-semibold">15 years+</p>
+              <p className="text-sm text-[#808080]">in business</p>
+            </div>
+            <div className="mt-[18px] flex flex-col items-center">
+              <img src={Bl} alt="img1" />
+              <p className="pt-3 text-base font-semibold">2 billion+</p>
+              <p className="text-sm text-[#808080]">tasks completed</p>
+            </div>
+            <div className="mt-[18px] flex flex-col items-center">
+              <img src={Br} alt="img1" />
+              <p className="pt-3 text-base font-semibold">1 million+</p>
+              <p className="text-sm text-[#808080]">per users</p>
+            </div>
+          </div>
         </div>
       </section>
       <section className="bg-[#fff9f3] p-[32px] border-b">
