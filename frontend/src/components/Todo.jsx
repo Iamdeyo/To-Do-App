@@ -68,11 +68,14 @@ const Todo = ({ data, edit, setEdit }) => {
             <div>
               <div
                 onClick={completedHandler}
-                className="rounded-full h-[18px] w-[18px] border-green-600 border flex items-center justify-center"
+                className={`rounded-full h-[18px] w-[18px] border-green-600 border flex cursor-pointer items-center justify-center ${
+                  isLoading &&
+                  'pointer-events-none cursor-not-allowed opacity-50'
+                }`}
               >
                 <FaCheck
                   size={10}
-                  className={`ease-in-out duration-150 text-green-600 ${
+                  className={` ease-in-out duration-150 text-green-600 ${
                     data.completed ? 'block' : 'hidden'
                   }`}
                 />
