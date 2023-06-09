@@ -5,23 +5,21 @@ import cors from 'cors';
 import dbInit from './db/db.js';
 import router from './routes/index.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
-import cookieParser from 'cookie-parser';
 
 dbInit();
 
 const app = express();
 
 // middlewares
+const allowedOrigins = ['https://dtodo.onrender.com/', 'http://localhost:3000'];
 app
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  .use(cookieParser())
   .use(
     cors({
-      credentials: true,
-      origin: '*',
+      origin: allowedOrigins,
     })
-  );
+  )
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }));
 app.use('/api', router);
 
 app.get('/', (req, res) => {
