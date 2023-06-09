@@ -15,7 +15,7 @@ const allowedOrigins = ['https://dtodo.onrender.com/', 'http://localhost:3000'];
 app
   .use(
     cors({
-      origin: allowedOrigins,
+      origin: 'https://dtodo.onrender.com',
     })
   )
   .use(express.json())
